@@ -1,0 +1,31 @@
+# conf/config.yaml
+defaults:
+  - scanner: default_scanner
+  - contour: default_contour
+  - roi: default_roi
+  - tracker: default_tracker
+
+# conf/scanner/default_scanner.yaml
+scanStartPoint: 0
+scanEndPoint: 100
+scanWindowWidth: 50
+
+# conf/contour/default_contour.yaml
+minArea: 100
+maxArea: 1000
+
+# conf/roi/default_roi.yaml
+enable_roi: true
+p1: [0, 0]
+p2: [100, 0]
+p3: [100, 100]
+p4: [0, 100]
+p5: [200, 200]
+p6: [300, 200]
+p7: [300, 300]
+p8: [200, 300]
+
+# conf/tracker/default_tracker.yaml
+topOffset: 10
+bottomOffset: 20
+trackingBoxWidth: 30
