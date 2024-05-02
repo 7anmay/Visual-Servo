@@ -46,15 +46,21 @@ Possible directions that could habe been taken:
 
 ## Experiments
 
-### Experiment 1
-Line fitting through hough transforms:
+### Experiment 1 - Line fitting
+Image preprocessing
 <img src="exps/houghLines.png" alt="Line detection" width="400">
 
 
+### Experiment 2 - Line fitting
+Line fitting through hough transforms:
 
-### Experiment 2
+<img src="exps/houghLines.png" alt="Line detection" width="400">
+<img src="exps/lines.png" alt="Line detection" width="400">
 
-Box Fitting 
+
+
+
+### Experiment 3 - Box Fitting 
 
 <img src="exps/boxOnLanes.png" alt="Box on crop lanes" width="400">
 <img src="exps/boxes.png" alt="Box on crop lanes image 2" width="400" >
@@ -62,38 +68,35 @@ Box Fitting
 The box fitting results seem promising therefore the development of box chaining method, where I chain boxes in close proximity from top to bottom until the end of the image in order to segment out rows.
 
 
-### Experiment 3
+### Experiment 4 - Centroid 
 
+<img src="exps/points_mask.png" alt="centroid point" width="400">
 
 
 ## Results
 
-Summary of the results obtained from the experiments.
 
-## Methodology
-
-Explanation of the methodology used in the project.
 
 ## Repository Installation and Usage
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/username/repository.git
+    git clone git@github.com:7anmay/Visual-Servo.git
     ```
 
 2. Install the dependencies:
 
     ```bash
-    npm install
+    pip install -r requirements.txt
     ```
 
 3. Run the project:
 
     ```bash
-    npm start
+    python3 servo.py
     ```
 
-## Conclusion
-
-Closing thoughts and final remarks about the project.
+```
+Use config.yaml to change config parameters including image path 
+```

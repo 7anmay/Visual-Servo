@@ -31,10 +31,9 @@ class ImageProcessor:
     
     def processImage(self, image, type):
         image = image.astype(np.uint8)
-        print("DEBUG: image shape ", image.shape)
+        #print("DEBUG: image shape ", image.shape)
         #image = self.applyROI(image)
         image = self.crop_roi(image, np.array([self.roi_vertices], np.int32))
-        print("DEBUG: image shape ", image.shape)
 
         self.image = image
         if type == "vanilla":
@@ -51,7 +50,7 @@ class ImageProcessor:
             eroded = cv2.morphologyEx(crop_mask, cv2.MORPH_OPEN, kernel)
             final_mask = cv2.dilate(eroded, kernel, iterations=1)
 
-        print("DEBUG: final_mask shape ", final_mask.shape)
+        #print("DEBUG: final_mask shape ", final_mask.shape)
         cv2.imshow("masked Image", final_mask)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
@@ -113,7 +112,6 @@ class ImageProcessor:
 
     def getPlantContours(self, mask, minArea=100.0):
         cont = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[0]
-        print("Debug sdfoisjfoiasjfoisjf ", cont)
         filter_conts = list()
         for i in range(len(cont)):
             if cont[i] is not None:
@@ -158,7 +156,7 @@ class ImageProcessor:
         sub_polys = list()
         subContour = list()
         vtx_idx = list()
-        print("DEBUG in split contour", contour)
+        #print("DEBUG in split contour", contour)
         contour = [contour.squeeze().tolist()]
         for subPoly in range(1, sub_polygon_num + 1):
             for vtx in range(len(contour[0])): 
@@ -175,13 +173,14 @@ class ImageProcessor:
 
 class CropLaneDetector:
     
-    def __init__(self, imagePath ) -> None:
+    def __init__(self) -> None:
         self.config = load_config()
         self.type = self.config["perception"]["type"]
+        self.imagePath = self.config["perception"]["image_path"] 
         ###### initialise all parameters here ######
         self.scannerParams = self.config['scanner']
         self.trackerParams = self.config['tracker']
-        self.imageProcessor =  ImageProcessor(imagePath, self.type)
+        self.imageProcessor =  ImageProcessor(self.imagePath, self.type)
         self.reset()
 
     def reset(self):
@@ -229,7 +228,7 @@ class CropLaneDetector:
         else:
             self.mask, self.plantObjects, self.plantCenters = self.imageProcessor.processImage(self.primaryImg, self.type)
             self.primaryImg = self.imageProcessor.image.copy()
-            print("DEBUG: plantCenters shape", len(self.plantCenters[0]))
+            #print("DEBUG: plantCenters shape", len(self.plantCenters[0]))
             self.numPlantsInScene = len(self.plantCenters[0])
         if not self.isInitialized:
             print("INFO: Finding crop lane")
@@ -249,8 +248,8 @@ class CropLaneDetector:
         ##findcroprowsinMVSignal()
 
         lines, linesROIs, _ = self.findLinesInImage()
-        print("DEBUG: lines shape", lines.shape)
-        print("DEBUG: linesROIs shape", linesROIs.shape)
+        #print("DEBUG: lines shape", lines.shape)
+        #print("DEBUG: linesROIs shape", linesROIs.shape)
         # print("DEBUG: linesROIs", linesROIs)
         if len(lines) != 0:
             # print("DEBUG: lines found", len(lines)) 
@@ -283,7 +282,6 @@ class CropLaneDetector:
                 print("IN try of find crop rows in mv signal")
                 idx = 0
                 for k in range(0, len(peaks)+1):
-                    print("in for ")
                     if k ==0:
                         troughsLine = troughs[troughs < peaks[k]]
                     else:
@@ -365,7 +363,7 @@ class CropLaneDetector:
                 xM, xB = utils.getLineRphi(ptsFlip)
                 t_i, b_i = utils.lineIntersectImgUpDown(xM, xB, self.imgHeight)
                 l_i, r_i = utils.lineIntersectImgSides(xM, xB, self.imgWidth)
-                print("DEBUG: row ID:", boxIdx, t_i, b_i, l_i, r_i )
+                #print("DEBUG: row ID:", boxIdx, t_i, b_i, l_i, r_i )
                 if xM is not None and b_i >= 0 and b_i <= self.imgWidth:
                     lines[boxIdx,:] = [xB, xM]
                     if self.isInitialized == False:
@@ -535,8 +533,8 @@ class CropLaneDetector:
     def drawGraphics(self):
         """function to draw the lines and the windows onto the image (self.primaryRGBImg)
         """
-        print("DEBUG: drawGraphics")
-        if self.primaryImg != []:
+        #print("DEBUG: drawGraphics")
+        if self.primaryImg is not None:
             self.graphicsImg = self.primaryImg.copy()
             # main line
             # cv2.line(self.graphicsImg, (int(self.mainLine_up[0]), int(self.mainLine_up[1])), (int(
@@ -560,7 +558,7 @@ class CropLaneDetector:
                 y = int(self.plantCenters[1, i])
                 self.graphicsImg = cv2.circle(
                     self.graphicsImg, (x, y), 3, (255, 0, 255), 5)
-            cv2.imshow("Graphics Image", self.graphicsImg)
+            cv2.imshow("Final draw image no lines found", self.graphicsImg)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
         else:
@@ -568,7 +566,7 @@ class CropLaneDetector:
 
 
 if __name__ == "__main__":
-    LaneDetector = CropLaneDetector("./visualServo.png")
+    LaneDetector = CropLaneDetector()
     if LaneDetector.findCropLane():
         print("Crop Lane Found")
         #LaneDetector.trackCropLane()

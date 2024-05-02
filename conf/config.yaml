@@ -1,5 +1,6 @@
 # Perception params
 perception:
+  image_path: "data/visualServo.png"
   type: "new" # lab / model
 
 # scanner window params
