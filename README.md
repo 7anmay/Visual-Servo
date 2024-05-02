@@ -29,16 +29,16 @@ The following outlines the progress and challenges encountered during the develo
     5. Find centers ✔️
 2. Median Lane Detection
     1. shape fitting
-        a. Line fitting ❌
-        b. Hough transforms ❌
-        c. Box fitting ✔️
-        d. Centeroid based techniques ⚠️
-        e. Sliding window ⚠️ (needs tuning)
+        1. Line fitting ❌
+        2. Hough transforms ❌
+        3. Box fitting ✔️
+        4. Centeroid based techniques ⚠️
+        5. Sliding window ⚠️ (needs tuning)
     2. Individual crop row detection
-        a. Moving variance signal method ⚠️ (needs tuning)
-        b. Box Chaining method ⚠️ - Todo
+        1. Moving variance signal method ⚠️ (needs tuning)
+        2. Box Chaining method ⚠️ - Todo
 3. Error calculation
-    a. Calculated from the median lane vector ✔️
+    1. Calculated from the median lane vector ✔️
 
 Possible directions that could habe been taken:
 - Deep Learning based segmentation methods
