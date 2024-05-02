@@ -1,21 +1,5 @@
-Notes:
 
-Tried techniques
-line fitting
-hough transform with line fitting
-box fitting
-lines via moving a scanning window and calculating intersections
-moving std method as per the paper: Towards Autonomous Visual Navigation in Arable Fields, ahmadi2021towards.
-
-To Be Tried techniques:
-Box chaining 
-point regression
-line based scanning
-Deep learning model based segmentation
-
-
-
-# Project Title
+# Crop lane visual servoing
 Crop lane visual servoing algorithm - Development Report
 
 The following outlines the progress and challenges encountered during the development of the visual servoing algorithm. The primary objective taken into consideration is ability to be able to detect lanes robustly in crop fields. The focus has been on identifying and implementing various image processing techniques that can reliably detect and follow crops under certain degree of variaitons.
