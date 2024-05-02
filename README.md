@@ -67,7 +67,7 @@ The box fitting results seem promising therefore the development of box chaining
 1. Clone the repository:
 
     ```bash
-    git clone git@github.com:7anmay/Visual-Servo.git
+    git clone https://github.com/7anmay/Visual-Servo.git
     ```
 
 2. Install the dependencies:
