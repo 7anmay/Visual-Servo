@@ -47,14 +47,22 @@ Possible directions that could habe been taken:
 ## Experiments
 
 ### Experiment 1
-Line fitting through hough trasnforms:
-![Line detection](exps/houghLines.png)
+Line fitting through hough transforms:
+<img src="exps/houghLines.png" alt="Line detection" width="400">
+
 
 
 ### Experiment 2
 
 Box Fitting
-![Box on crop lanes](exps/boxOnLanes.png)
+<img src="exps/boxOnLanes.png" alt="Box on crop lanes" width="400">
+<img src="exps/boxes.png" alt="Box on crop lanes image 2" width="400" >
+
+The box fitting results seem promising therefore the development of box chaining method, where I chain boxes in close proximity from top to bottom until the end of the image in order to segment out rows.
+
+### Experiment 3
+
+
 
 ## Results
 
