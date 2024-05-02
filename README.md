@@ -48,7 +48,8 @@ Possible directions that could habe been taken:
 
 ### Experiment 1 - Line fitting
 Image preprocessing
-<img src="exps/houghLines.png" alt="Line detection" width="400">
+
+<img src="exps/seg.png" alt="Line detection" width="400">
 
 
 ### Experiment 2 - Line fitting
