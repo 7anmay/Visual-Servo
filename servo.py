@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from config import load_config 
+from conf.config import load_config 
 from scipy.signal import find_peaks
 import utils
 from shapely.geometry import Point
