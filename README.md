@@ -19,7 +19,7 @@ The following outlines the progress and challenges encountered during the develo
         4. Centeroid based techniques ⚠️
         5. Sliding window ⚠️ (needs tuning)
     2. Individual crop row detection
-        1. Moving variance signal method ⚠️ (needs tuning)
+        1. Moving variance signal method ⚠️ (needs tuning) (courtesy - "Towards Autonomous Visual Navigation in Arable Fields" by Ahmadi et al.)
         2. Box Chaining method ⚠️ - Todo
 3. Error calculation
     1. Calculated from the median lane vector ✔️
