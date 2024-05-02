@@ -1,31 +1,49 @@
-# conf/config.yaml
-defaults:
-  - scanner: default_scanner
-  - contour: default_contour
-  - roi: default_roi
-  - tracker: default_tracker
+# Perception params
+perception:
+  type: "new" # lab / model
 
-# conf/scanner/default_scanner.yaml
-scanStartPoint: 0
-scanEndPoint: 100
-scanWindowWidth: 50
+# scanner window params
+scanner:
+  scanSteps: 5
+  scanStartPoint: 0
+  scanEndPoint: 512
+  scanWindowWidth: 64
 
-# conf/contour/default_contour.yaml
-minArea: 100
-maxArea: 1000
+# tracker params
+tracker:
+  trackingBoxWidth: 200
+  topOffset: 0
+  bottomOffset: 0
+  sacleRatio: 0.4
 
-# conf/roi/default_roi.yaml
-enable_roi: true
-p1: [0, 0]
-p2: [100, 0]
-p3: [100, 100]
-p4: [0, 100]
-p5: [200, 200]
-p6: [300, 200]
-p7: [300, 300]
-p8: [200, 300]
+# contour params
+contour:
+  minArea: 100
+  split: False
 
-# conf/tracker/default_tracker.yaml
-topOffset: 10
-bottomOffset: 20
-trackingBoxWidth: 30
+roi:
+  enable_roi: True
+  p1: 
+  - 0
+  - 0
+  p2:
+  - 350
+  - 0
+  p3:
+  - 10
+  - 720
+  p4:
+  - 0
+  - 720
+  p5: 
+  - 830
+  - 0
+  p6:
+  - 1280
+  - 0
+  p7:
+  - 1280
+  - 720
+  p8: 
+  - 1270
+  - 720
