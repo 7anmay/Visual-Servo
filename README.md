@@ -54,11 +54,13 @@ Line fitting through hough transforms:
 
 ### Experiment 2
 
-Box Fitting
+Box Fitting 
+
 <img src="exps/boxOnLanes.png" alt="Box on crop lanes" width="400">
 <img src="exps/boxes.png" alt="Box on crop lanes image 2" width="400" >
 
 The box fitting results seem promising therefore the development of box chaining method, where I chain boxes in close proximity from top to bottom until the end of the image in order to segment out rows.
+
 
 ### Experiment 3
 
